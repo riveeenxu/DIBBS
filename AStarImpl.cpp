@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 #include <cmath>
+#include <chrono>
+#include <unistd.h>
+
 using namespace std;
 
-/*
-  the sample mazes are 31*31 (character matrix size)
-*/
-#define ROW 61
-#define COL 61
+
+#define ROW 335
+#define COL 335
 
 // Creating a shortcut for int, int pair type
 typedef pair<int, int> Pair;
@@ -15,7 +16,6 @@ typedef pair<int, int> Pair;
 typedef pair<double, pair<int, int>> pPair;
 
 ofstream output;
-
 
 void printmap(char grid[ROW][COL])
 {
@@ -274,8 +274,8 @@ void aStarSearch(char grid[ROW][COL], Pair start, Pair dest)
                     cellDetails[i-1][j].h = hNew;
                     cellDetails[i-1][j].parent_i = i;
                     cellDetails[i-1][j].parent_j = j;
-                    grid[i-1][j]='*';
-                    printmap(grid);
+                    //grid[i-1][j]='*';
+                    //printmap(grid);
                 }
             }
         }
@@ -325,8 +325,8 @@ void aStarSearch(char grid[ROW][COL], Pair start, Pair dest)
                     cellDetails[i+1][j].h = hNew;
                     cellDetails[i+1][j].parent_i = i;
                     cellDetails[i+1][j].parent_j = j;
-                                        grid[i+1][j]='*';
-                                      printmap(grid);
+                                      //  grid[i+1][j]='*';
+                                   //   printmap(grid);
                 }
                 
             }
@@ -380,8 +380,8 @@ void aStarSearch(char grid[ROW][COL], Pair start, Pair dest)
                     cellDetails[i][j+1].h = hNew;
                     cellDetails[i][j+1].parent_i = i;
                     cellDetails[i][j+1].parent_j = j;
-                                        grid[i][j+1]='*';
-                                        printmap(grid);
+                                     //   grid[i][j+1]='*';
+                                     //   printmap(grid);
                 }
             }
         }
@@ -434,8 +434,8 @@ void aStarSearch(char grid[ROW][COL], Pair start, Pair dest)
                     cellDetails[i][j-1].h = hNew;
                     cellDetails[i][j-1].parent_i = i;
                     cellDetails[i][j-1].parent_j = j;
-                                    grid[i][j-1]='*';
-                                 printmap(grid);
+                                  //  grid[i][j-1]='*';
+                                // printmap(grid);
                                //  char temp;
                               //   cin >> temp;
                   
@@ -491,6 +491,8 @@ int main(int argc, char** argv)
     
     
     printmap(grid);
+
+    	auto starttime = chrono::steady_clock::now();
   
     // Source is the top left-most corner
     Pair start = make_pair(1, 1);
@@ -499,6 +501,12 @@ int main(int argc, char** argv)
     Pair dest = make_pair(ROW-2, COL-2);
   
     aStarSearch(grid, start, dest);
+        auto end = chrono::steady_clock::now();
+    cout << "Elapsed time in milliseconds : " 
+		<< chrono::duration_cast<chrono::milliseconds>(end - starttime).count()
+		<< " ms" << endl;
+    printmap(grid);
+
     output.close();
   
     return(0);
