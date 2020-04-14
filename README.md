@@ -1,5 +1,5 @@
 # DIBBS
- Dynamically Improved Bounds Bidirectional Search (DIBBS) is a front-to-front bidirectional search based on A*.
+ Dynamically Improved Bounds Bidirectional Search (DIBBS) is a front-to-end bidirectional search based on A*.
  
  This repo contains a simple implimentation of the algorithm using c++.
 
