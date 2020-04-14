@@ -42,6 +42,8 @@ The standard compiler for this project is g++.
 ### Other comments
 For futher development of this code such as large grid maze testing, the 2D matrices used to store map data can be replaced using vectors to avoid memory limitations.
 
+Currently there is a huge overhead for the dualthread implimentation and breaking up the celldetail structure is necessary to reduce such overhead.
+
 This work is a part of the SIUE Math Department Senior Project.
 
 &copy;Ziye Xu 2020
